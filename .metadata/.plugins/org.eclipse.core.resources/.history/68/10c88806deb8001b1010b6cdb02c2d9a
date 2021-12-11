@@ -1,0 +1,122 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="seller.login.Userlog"%>
+<%@page import="seller.login.Userdatadb"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<img src="pic/pro.jpg" alt="Flowers" style="width:auto;">
+<header>
+    <nav>
+		<label class="logo">GroceryPro</label>
+		<ul>
+		   <li><a class="active" href="#">Home</a></li>
+		   <li>
+			  <a href="#">Category
+			  <i class="fas fa-caret-down"></i>
+			  </a>
+			  <ul>
+				 <li><a href="#">Vegetables</a></li>
+				 <li><a href="#">Fruits</a></li>
+				 <li><a href="#">More</a></li>
+			  </ul>
+		   </li>
+		   <li>
+			  <a href="#">Deals
+			  <i class="fas fa-caret-down"></i>
+			  </a>
+			  <ul>
+				 <li><a href="#">Offers</a></li>
+				 <li><a href="#">Flash Sale</a></li>
+				 <li><a href="#">Others</a></li>
+			  </ul>
+		   </li>
+		   <li><a href="#">Contact</a></li>
+		   <li>
+			<a href="#">My Account
+				<i class="fas fa-caret-down"></i>
+			</a>
+			<ul>
+				<li><a href="additems.jsp">Add Items</a></li>
+				<li><a href="profile.jsp">Profile</a></li>
+				<li><a href="login.jsp">Log Out</a></li>
+				<li>
+			</li>
+			</ul>
+			</li>
+			<li><a href="#">Feedback</a></li>
+		</ul>
+	 </nav>
+</header>
+<%
+	Userlog user= new Userlog();
+	String username=(String)session.getAttribute("username");
+	Userdatadb udb = new Userdatadb();
+	user=udb.Retrive(username);
+%>
+ <div align="center" class="login-form">
+  <form action="${pageContext.request.contextPath}/loginservlet" method="post" >
+   <h1 class="ha1">User Profile</h1>
+		
+		<div class="txtb">
+		 	<label ><b>Shop Name: </b><% out.print(user.getName()); %></label>
+		</div>
+		
+		<div class="txtb">
+			<label ><b>Email: </b><% out.print(user.getUsername()); %></label>
+		</div>
+		<div class="txtb">
+			<label ><b>Phone: </b><% out.print(user.getPhone()); %></label>
+		</div>
+		<input type="button" class="logbtn" value="Change My Password" name="submit">
+		
+		<input type="button" class="logbtn1" class="ma" value="Delete  My Account" name="submit">
+ </form>
+ </div>
+  <footer class="footer" style="margin-top: 800px;">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>get help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">shipping</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>online shop</h4>
+  	 			<ul>
+  	 				<li><a href="#">watch</a></li>
+  	 				<li><a href="#">bag</a></li>
+  	 				<li><a href="#">shoes</a></li>
+  	 				<li><a href="#">dress</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>About us</h4>
+  	 				<p class="par">fksnkjdsnjkdskjfds</p>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  </footer>
+</body>
+</html>
